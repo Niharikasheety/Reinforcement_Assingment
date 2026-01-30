@@ -1,23 +1,14 @@
-class AlternatePrimeNumbers {
+class AlternatePrimes {
     public static void main(String[] args) {
         int count = 0;
 
-        for (int num = 2; num <= 50; num++) {
-            boolean isPrime = true;
+        for (int n = 2; n <= 50; n++) {
+            boolean prime = true;
+            for (int i = 2; i <= n / 2; i++)
+                if (n % i == 0) { prime = false; break; }
 
-            for (int i = 2; i <= num / 2; i++) {
-                if (num % i == 0) {
-                    isPrime = false;
-                    break;
-                }
-            }
-
-            if (isPrime) {
-                count++;
-                if (count % 2 == 0) {   // alternate prime
-                    System.out.print(num + " ");
-                }
-            }
+            if (prime && ++count % 2 == 0)
+                System.out.print(n + " ");
         }
     }
 }
